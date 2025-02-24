@@ -107,7 +107,7 @@ Once you're satisfied with the result, it's time to merge the update branch into
 
 In this article, I've shared some of my insights and processes for updating dependencies and the Zaxverse template. I genuinely hope this article proves valuable and assists you in managing your projects more efficiently.
 
-If you have any alternative or improved approaches for updating dependencies/Zaxverse, I would love to hear from you. Thus, don't hesitate to start a discussion in the repository, email me, or open an issue. Your input and ideas are highly appreciated!
+If you have any alternative or improved approaches for updating dependencies/AstroPaper, I would love to hear from you. Thus, don't hesitate to start a discussion in the repository, email me, or open an issue. Your input and ideas are highly appreciated!
 
 Please understand that my schedule is quite busy these days, and I may not be able to respond quickly. However, I promise to get back to you as soon as possible. 😬
 

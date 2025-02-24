@@ -4,7 +4,7 @@ pubDatetime: 2024-01-04T09:30:41.816Z
 title: Zaxverse 4.0
 slug: "astro-paper-v4"
 featured: true
-ogImage: ../../assets/images/Zaxverse-v4.png
+ogImage: ../../assets/images/AstroPaper-v4.png
 tags:
   - release
 description: "Zaxverse v4: ensuring a smoother and more feature-rich blogging experience."
@@ -12,7 +12,7 @@ description: "Zaxverse v4: ensuring a smoother and more feature-rich blogging ex
 
 Hello everyone! Wishing you a happy New Year 🎉 and all the best for 2024! We're excited to announce the release of Zaxverse v4, a significant update that introduces a range of new features, improvements, and bug fixes to elevate your blogging experience. A big thank you to all the contributors for their valuable input and efforts in making version 4 possible!
 
-![Zaxverse v4](@assets/images/Zaxverse-v4.png)
+![Zaxverse v4](@assets/images/AstroPaper-v4.png)
 
 ## Table of contents
 
