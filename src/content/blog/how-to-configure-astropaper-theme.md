@@ -2,17 +2,17 @@
 author: Sat Naing
 pubDatetime: 2022-09-23T04:58:53Z
 modDatetime: 2024-10-14T09:27:28.605Z
-title: How to configure AstroPaper theme
+title: How to configure Zaxverse theme
 slug: how-to-configure-astropaper-theme
 featured: true
 draft: false
 tags:
   - configuration
   - docs
-description: How you can make AstroPaper theme absolutely yours.
+description: How you can make Zaxverse theme absolutely yours.
 ---
 
-AstroPaper is a highly customizable Astro blog theme. With AstroPaper, you can customize everything according to your personal taste. This article will explain how you can make some customizations easily in the config file.
+Zaxverse is a highly customizable Astro blog theme. With Zaxverse, you can customize everything according to your personal taste. This article will explain how you can make some customizations easily in the config file.
 
 ## Table of contents
 
@@ -28,7 +28,7 @@ export const SITE = {
   website: "https://astro-paper.pages.dev/",
   author: "Sat Naing",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
+  title: "Zaxverse",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 3,
@@ -77,7 +77,7 @@ export const LOCALE = {
 
 You can specify site's title or logo image in `src/config.ts` file.
 
-![An arrow pointing at the website logo](https://res.cloudinary.com/noezectz/v1663911318/astro-paper/AstroPaper-logo-config_goff5l.png)
+![An arrow pointing at the website logo](https://res.cloudinary.com/noezectz/v1663911318/astro-paper/Zaxverse-logo-config_goff5l.png)
 
 ```js
 // file: src/config.ts
@@ -89,9 +89,9 @@ export const LOGO_IMAGE = {
 };
 ```
 
-If you specify `LOGO_IMAGE.enable` => `false`, AstroPaper will automatically convert `SITE.title` to the main site text logo.
+If you specify `LOGO_IMAGE.enable` => `false`, Zaxverse will automatically convert `SITE.title` to the main site text logo.
 
-If you specify `LOGO_IMAGE.enable` => `true`, AstroPaper will use the logo image as the site's main logo.
+If you specify `LOGO_IMAGE.enable` => `true`, Zaxverse will use the logo image as the site's main logo.
 
 You have to specify `logo.png` or `logo.svg` under `/public/assets` directory. Currently, only svg and png image file formats are supported. (**_Important!_** _logo name has to be logo.png or logo.svg)_
 
@@ -150,7 +150,7 @@ export const SOCIALS: SocialObjects = [
 ]
 ```
 
-Another thing to note is that you can specify the `linkTitle` in the object. This text will display when hovering on the social icon link. Besides, this will improve accessibility and SEO. AstroPaper provides default link title values; but you can replace them with your own texts.
+Another thing to note is that you can specify the `linkTitle` in the object. This text will display when hovering on the social icon link. Besides, this will improve accessibility and SEO. Zaxverse provides default link title values; but you can replace them with your own texts.
 
 For example,
 

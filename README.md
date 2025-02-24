@@ -1,6 +1,6 @@
 # Zaxverse
 
-Zaxverse 是一个使用 [Astro](https://astro.build/) 构建的个人博客网站，主题基于 [AstroPaper](https://github.com/satnaing/astro-paper)。
+Zaxverse 是一个使用 [Astro](https://astro.build/) 构建的个人博客网站，主题基于 [Zaxverse](https://github.com/satnaing/astro-paper)。
 
 ## 🔥 特性
 

@@ -1,18 +1,18 @@
 ---
 author: Sat Naing
 pubDatetime: 2023-09-25T10:25:54.547Z
-title: AstroPaper 3.0
+title: Zaxverse 3.0
 slug: astro-paper-v3
 featured: false
 ogImage: https://github.com/satnaing/astro-paper/assets/53733092/1ef0cf03-8137-4d67-ac81-84a032119e3a
 tags:
   - release
-description: "AstroPaper Version 3: Elevating Your Web Experience with Astro v3 and Seamless View Transitions"
+description: "Zaxverse Version 3: Elevating Your Web Experience with Astro v3 and Seamless View Transitions"
 ---
 
-We're excited to announce the release of AstroPaper v3, packed with new features, enhancements, and bug fixes to elevate your web development experience. Let's dive into the highlights of this release:
+We're excited to announce the release of Zaxverse v3, packed with new features, enhancements, and bug fixes to elevate your web development experience. Let's dive into the highlights of this release:
 
-![AstroPaper v3](@assets/images/AstroPaper-v3.png)
+![Zaxverse v3](@assets/images/Zaxverse-v3.png)
 
 ## Table of contents
 
@@ -25,7 +25,7 @@ We're excited to announce the release of AstroPaper v3, packed with new features
   <!-- <source src="/assets/docs/astro-paper-v3-view-transitions-demo.mp4" type="video/mp4"> -->
 </video>
 
-AstroPaper now fully supports [Astro v3](https://astro.build/blog/astro-3/), offering improved performance and rendering speed.
+Zaxverse now fully supports [Astro v3](https://astro.build/blog/astro-3/), offering improved performance and rendering speed.
 
 Besides, we've added support for Astro's [ViewTransitions API](https://docs.astro.build/en/guides/view-transitions/), allowing you to create captivating and dynamic transitions between views.
 
@@ -37,7 +37,7 @@ In the "Recent Section", only non-featured posts will be displayed to avoid dupl
 
 We've updated the logic for automatic OG image generation, making it even more reliable and efficient. Besides, it now supports special characters in post titles, ensuring accurate, flexible and eye-catching social media previews.
 
-`SITE.ogImage` is now optional. If it is not specified, AstroPaper will automatically generate an OG image using `SITE.title`, `SITE.desc` and `SITE.website`
+`SITE.ogImage` is now optional. If it is not specified, Zaxverse will automatically generate an OG image using `SITE.title`, `SITE.desc` and `SITE.website`
 
 ### Theme meta tag
 
@@ -69,13 +69,13 @@ The single-line code block wrapping issue has been solved, making your code snip
 
 Update nav style CSS to allow adding more nav links to the navigation.
 
-## Upgrade to AstroPaper v3
+## Upgrade to Zaxverse v3
 
-> This section is only for those who want to upgrade AstroPaper v3 from the older versions.
+> This section is only for those who want to upgrade Zaxverse v3 from the older versions.
 
-This section will help you migrate from AstroPaper v2 to AstroPaper v3.
+This section will help you migrate from Zaxverse v2 to Zaxverse v3.
 
-Before reading the rest of the section, you might also want to check [this article](https://astro-paper.pages.dev/posts/how-to-update-dependencies/) for upgrading dependencies and AstroPaper.
+Before reading the rest of the section, you might also want to check [this article](https://astro-paper.pages.dev/posts/how-to-update-dependencies/) for upgrading dependencies and Zaxverse.
 
 ## Option 1: Fresh Restart (recommended)
 
@@ -122,9 +122,9 @@ It's important to keep all the files which have been already updated. These file
 }
 ```
 
-**_Step 1: Replace everything else with AstroPaper v3_**
+**_Step 1: Replace everything else with Zaxverse v3_**
 
-In this step, replace everything\_ except above files/directories (plus your customized files/directories)\_ with AstroPaper v3.
+In this step, replace everything\_ except above files/directories (plus your customized files/directories)\_ with Zaxverse v3.
 
 **_Step 3: Schema Updates_**
 
@@ -137,7 +137,7 @@ Therefore, all the `BlogFrontmatter` type inside files need to be updated with `
 For example: `src/components/Card.tsx`
 
 ```ts
-// AstroPaper v2
+// Zaxverse v2
 import type { BlogFrontmatter } from "@content/_schemas";
 
 export interface Props {
@@ -148,7 +148,7 @@ export interface Props {
 ```
 
 ```ts
-// AstroPaper v3
+// Zaxverse v3
 import type { CollectionEntry } from "astro:content";
 
 export interface Props {
@@ -166,7 +166,7 @@ Actually, I've already written a blog post for this case and you can check out [
 
 ## Outro
 
-Ready to explore the exciting new features and improvements in AstroPaper v3? Start [using AstroPaper](https://github.com/satnaing/astro-paper) now.
+Ready to explore the exciting new features and improvements in Zaxverse v3? Start [using Zaxverse](https://github.com/satnaing/astro-paper) now.
 
 For other bug fixes and integration updates, check out the [release notes](https://github.com/satnaing/astro-paper/releases/tag/v3.0.0) to learn more.
 

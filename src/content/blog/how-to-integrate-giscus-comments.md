@@ -2,7 +2,7 @@
 author: FjellOverflow
 pubDatetime: 2024-07-25T11:11:53Z
 modDatetime: 2024-09-25T12:07:53Z
-title: How to integrate Giscus comments into AstroPaper
+title: How to integrate Giscus comments into Zaxverse
 slug: how-to-integrate-giscus-comments
 featured: true
 draft: false
@@ -146,7 +146,7 @@ export default function Comments({
   useEffect(() => {
     const themeButton = document.querySelector("#theme-btn");
     const handleClick = () => {
-      setTheme(prevTheme => (prevTheme === "dark" ? "light" : "dark"));
+      setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
     };
 
     themeButton?.addEventListener("click", handleClick);

@@ -115,6 +115,59 @@
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
+
+  /* 添加字体定义 */
+  @font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/source-han-sans-cn/2.004/OTF/SourceHanSansCN-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/source-han-sans-cn/2.004/OTF/SourceHanSansCN-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Source Code Pro';
+    src: url('https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/source-code-pro/14.0.0/WOFF2/TTF/SourceCodePro-Regular.ttf.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Source Code Pro';
+    src: url('https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/source-code-pro/14.0.0/WOFF2/TTF/SourceCodePro-Bold.ttf.woff2') format('woff2');
+    font-weight: bold;
+    font-display: swap;
+  }
+
+  /* 定义根变量 */
+  :root {
+    --font-main: 'Source Han Sans CN', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-code: 'Source Code Pro', Consolas, monospace;
+  }
+
+  /* 应用字体 */
+  body {
+    @apply flex min-h-[100svh] flex-col bg-skin-fill text-skin-base selection:bg-skin-accent/70 selection:text-skin-inverted;
+    font-family: var(--font-main);
+  }
+
+  /* 代码字体 */
+  code, pre {
+    font-family: var(--font-code) !important;
+  }
+
+  /* 调整 prose 样式 */
+  .prose {
+    @apply prose-headings:!font-main prose-headings:!text-skin-base prose-p:!text-skin-base;
+    /* 思源黑体行高可以稍微紧凑一点 */
+    line-height: 1.75;
+  }
 }
 
 @layer components {
