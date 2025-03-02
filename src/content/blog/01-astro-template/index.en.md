@@ -4,6 +4,8 @@ description: "Using Astro Template"
 author: "zackshi"
 pubDate: 2025-03-02
 updatedDate: 2025-03-02
+slug: "astro-template"
+lang: "en"
 ---
 
 # Using Astro Template

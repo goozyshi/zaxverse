@@ -1,0 +1,201 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { 
+      slug: post.data.slug || post.slug.split('/index.')[0].replace(/^\d+-/, '')
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+
+// 获取所有文章
+const allPosts = await getCollection('blog');
+
+// 获取文章的基础路径（不包含语言后缀）
+const getBasePath = (post) => {
+  return post.slug.split('/index.')[0];
+};
+
+// 获取当前文章的所有语言版本
+const currentBasePath = getBasePath(post);
+const allVersions = allPosts.filter(p => getBasePath(p) === currentBasePath);
+
+// 获取其他语言版本（用于语言切换按钮）
+const otherLangVersion = allVersions.find(p => p.data.lang !== post.data.lang);
+
+// 日期格式化
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString(post.data.lang === 'en' ? 'en-US' : 'zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+---
+
+<Layout title={post.data.title}>
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    {/* 文章头部 - 全宽度设计 */}
+    <header class="w-full bg-white dark:bg-gray-800 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* 语言切换按钮 */}
+        {otherLangVersion && (
+          <div class="flex justify-end mb-6">
+            <a 
+              href={`/blog/${getBasePath(otherLangVersion)}`}
+              class="group inline-flex items-center px-4 py-2 rounded-full 
+                     bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 
+                     text-gray-700 dark:text-gray-300 transition-all"
+            >
+              <span class="mr-2">
+                {otherLangVersion.data.lang === 'en' ? '🇺🇸' : '🇨🇳'}
+              </span>
+              <span>{otherLangVersion.data.lang === 'en' ? 'Read in English' : '阅读中文版'}</span>
+              <svg 
+                class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        )}
+
+        <div class="max-w-4xl">
+          {/* 标签列表 */}
+          {post.data.tags && (
+            <div class="flex flex-wrap gap-2 mb-8">
+              {post.data.tags.map(tag => (
+                <span class="inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                           bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white 
+                     tracking-tight leading-tight mb-8">
+            {post.data.title}
+          </h1>
+
+          <div class="flex items-center space-x-6 text-gray-500 dark:text-gray-400">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"></div>
+              <span class="font-medium">{post.data.author}</span>
+            </div>
+            <time datetime={post.data.pubDate.toISOString()} class="text-sm">
+              {formatDate(post.data.pubDate)}
+            </time>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {/* 文章内容区域 - 宽屏设计 */}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex gap-16">
+        {/* 文章主体 */}
+        <article class="flex-1 bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-8 lg:p-12">
+          <div class="prose prose-lg max-w-none dark:prose-invert
+                      prose-headings:font-bold prose-headings:tracking-tight
+                      prose-a:text-blue-600 dark:prose-a:text-blue-400
+                      prose-img:rounded-xl prose-img:shadow-lg
+                      prose-pre:bg-gray-50 dark:prose-pre:bg-gray-900
+                      prose-pre:rounded-xl prose-pre:shadow-sm">
+            <Content />
+          </div>
+
+          {/* 文章底部 */}
+          <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-700">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <button class="inline-flex items-center px-4 py-2 rounded-lg
+                             bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 
+                             dark:hover:bg-gray-600 transition-colors
+                             text-gray-700 dark:text-gray-300">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z">
+                    </path>
+                  </svg>
+                  分享文章
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {/* 目录侧边栏 */}
+        {headings.length > 0 && (
+          <aside class="hidden xl:block w-72">
+            <div class="sticky top-8 p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm">
+              <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">目录</h2>
+              <nav class="space-y-2">
+                {headings.map(heading => (
+                  <a 
+                    href={`#${heading.slug}`}
+                    class={`block py-1.5 text-sm transition-colors
+                           ${heading.depth > 2 ? 'pl-4' : ''}
+                           hover:text-blue-600 dark:hover:text-blue-400
+                           ${heading.depth === 1 
+                             ? 'text-gray-900 dark:text-white font-medium' 
+                             : 'text-gray-600 dark:text-gray-400'}`}
+                  >
+                    {heading.text}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </aside>
+        )}
+      </div>
+    </div>
+
+    {/* 语言切换工具栏 */}
+    {allVersions.length > 1 && (
+      <div class="fixed bottom-8 right-8 z-50">
+        <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full shadow-lg p-2">
+          {allVersions.map(version => (
+            <a
+              href={`/blog/${getBasePath(version)}`}
+              class={`px-3 py-1.5 rounded-full transition-all
+                      ${version.slug === post.slug 
+                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400' 
+                        : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400'}`}
+            >
+              {version.data.lang === 'en' ? '🇺🇸 EN' : '🇨🇳 中'}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </main>
+</Layout>
+
+<script>
+  // 目录滚动高亮
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      if (entry.intersectionRatio > 0) {
+        document.querySelector(`nav a[href="#${id}"]`)?.classList.add('text-blue-600', 'dark:text-blue-400', 'font-medium');
+      } else {
+        document.querySelector(`nav a[href="#${id}"]`)?.classList.remove('text-blue-600', 'dark:text-blue-400', 'font-medium');
+      }
+    });
+  }, { rootMargin: '0px 0px -80% 0px' });
+
+  document.querySelectorAll('h2[id], h3[id], h4[id]').forEach((section) => {
+    observer.observe(section);
+  });
+</script>

@@ -4,6 +4,8 @@ description: "使用 Astro 模板"
 author: "zackshi"
 pubDate: 2025-03-02
 updatedDate: 2025-03-02
+slug: "astro-template"
+lang: "zh"
 ---
 
 # 使用 Astro 模板
